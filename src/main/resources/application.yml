@@ -1,0 +1,15 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    password: admin
+    url: jdbc:h2:mem:accountsdb
+    username: accounts
+  h2:
+    console:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: none
+  application:
+    name: ACCOUNTS

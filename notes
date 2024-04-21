@@ -1,0 +1,19 @@
+1) Create Spring Boot Application
+2) Create Docker Image
+    mvn compile jib:dockerBuild
+3) Push docker image to docker hub
+    docker push javaexpress/accounts:5.0.0
+4) create helm chart
+    helm create spring-boot-app-helm
+5) Prepare Deployment,Service,values.yaml file for our requirement
+6) Install helm chart
+    helm dependencies build
+    helm lint spring-boot-app-helm
+    helm install spring-boot-app-release spring-boot-app-helm
+    helm list
+    helm status spring-boot-app-release
+    kubectl get all
+    kubectl get svc
+    kubectl get pods
+    minikube service accounts-service -p local-cluster
+    helm uninstall spring-boot-app-release
