@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: accounts-springboot-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: accounts
+  template:
+    metadata:
+      name: accountspod
+      labels:
+        app: accounts
+    spec:
+      containers:
+        - name: accounts
+          image: javaexpress/accounts:5.0.0
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: accounts-springboot-service
+spec:
+  selector:
+    app: accounts
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 9898
+      targetPort: 8080
